@@ -1,2 +1,2 @@
 # chips
-This is the public repository for Chips - A mobile poker chip management app.
+This is the public repository for Chips - a mobile poker chip management app.
