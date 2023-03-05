@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:chips/util/button.dart';
 
 // this is the home screen
 // currently set to flutter demo
@@ -12,6 +13,8 @@ class ChipsHome extends StatefulWidget {
 class _ChipsHomeState extends State<ChipsHome> {
   @override
   Widget build(BuildContext context) {
+    final double defaultWidth = MediaQuery.of(context).size.width * 0.22;
+    final double defaultHeight = MediaQuery.of(context).size.width * 0.1;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -19,37 +22,32 @@ class _ChipsHomeState extends State<ChipsHome> {
           children: [
             Container(
               alignment: Alignment.center,
-              /*
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.width * .1),
-              */
               child: const Text(
-                'Chips',
+                'Quick Chips',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 64),
+                style: TextStyle(fontSize: 54),
               ),
             ),
             Column(
               children: [
-                ElevatedButton(
+                // Create, Join, Settings
+                ChipsButton(
+                  width: defaultWidth,
+                  height: defaultHeight,
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.22,
-                      MediaQuery.of(context).size.width * 0.1,
-                    ),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                      MediaQuery.of(context).size.height * 0.1,
-                    )),
-                    //backgroundColor: inverseSurface,
-                    //foregroundColor: primarySurface,
-                    textStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  child: const Text('Create game'),
-                )
+                  child: const Text('Create'),
+                ),
+                ChipsButton(
+                  width: defaultWidth,
+                  height: defaultHeight,
+                  onPressed: () {},
+                  child: const Text('Join'),
+                ),
+                ChipsButton(
+                    width: defaultWidth,
+                    height: defaultHeight,
+                    onPressed: () {},
+                    child: const Text('Settings'))
               ],
             ),
           ],
