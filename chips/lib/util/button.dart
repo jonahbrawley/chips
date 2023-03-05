@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
 
-class chipsButton extends ElevatedButton {
-  final double? width;
-  final double? height;
+class ChipsButton extends Container {
+  final double width;
+  final double height;
 
 // constructor
-  chipsButton({
+  ChipsButton({
     Key? key,
-    required VoidCallback onPressed,
     required Widget child,
-    this.width,
-    this.height,
-  }) : super(
-          key: key,
-          onPressed: onPressed,
-          child: child,
-        );
+    required this.width,
+    required this.height,
+  }) : super(key: key);
 
   @override
-  ButtonStyle styleFrom(BuildContext context) {
-    final ButtonStyle style = super.styleFrom(context);
-
-    if (width != null || height != null) {
-      return style.copyWith(
-        minimumSize: width != null && height != null
-            ? Size(width!, height!)
-            : width != null
-                ? Size(width!, style.minimumSize!.height)
-                : Size(style.minimumSize!.width, height!),
-      );
-    }
-    return style;
+  Widget build(BuildContext context) {
+    return Container(
+      child: ElevatedButton(
+          onPressed: () {},
+          // child: Text() ...
+          child: child,
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(
+              width,
+              height,
+            ),
+          )),
+    );
   }
 }
