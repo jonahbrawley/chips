@@ -23,14 +23,16 @@ class ChipsButton extends Container {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            fixedSize: Size(
-              width,
-              height,
-            ),
+          fixedSize: Size(
+            width,
+            height,
+          ),
+          /*
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                   MediaQuery.of(context).size.height * 0.1),
-            )),
+            )*/
+        ),
         // child is Text()
         child: child,
       ),
