@@ -3,8 +3,7 @@ import 'package:chips/util/button.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 class ChipsHome extends StatefulWidget {
-  final ThemeMode chipsThemeMode;
-  const ChipsHome({Key? key, required this.chipsThemeMode}) : super(key: key);
+  const ChipsHome({Key? key}) : super(key: key);
 
   @override
   State<ChipsHome> createState() => _ChipsHomeState();
@@ -55,7 +54,7 @@ class _ChipsHomeState extends State<ChipsHome> {
                     width: defaultWidth,
                     height: defaultHeight,
                     onPressed: () {
-                      _toggleTheme(this.chipsThemeMode);
+                      // toggle
                     },
                     child: const Text('Theme')),
                 /*

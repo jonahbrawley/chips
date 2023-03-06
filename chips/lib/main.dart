@@ -36,9 +36,7 @@ class MyApp extends StatelessWidget {
       darkTheme: _darkMode,
       themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
-      home: ChipsHome(
-        chipsThemeMode: _themeMode,
-      ),
+      home: ChipsHome(),
     );
   }
 }
