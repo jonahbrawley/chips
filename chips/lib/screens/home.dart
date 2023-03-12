@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
+// chips
+import 'package:chips/main.dart';
 import 'package:chips/util/button.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 class ChipsHome extends StatefulWidget {
   const ChipsHome({Key? key}) : super(key: key);
@@ -10,12 +12,8 @@ class ChipsHome extends StatefulWidget {
 }
 
 class _ChipsHomeState extends State<ChipsHome> {
-  void _toggleTheme(ThemeMode themeMode) {
-    setState(() {
-      themeMode =
-          themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    });
-  }
+  List<bool> _themeSel = <bool>[true, false];
+  List<Widget> _theme = [Text('Light'), Text('Dark')];
 
   @override
   Widget build(BuildContext context) {
@@ -29,40 +27,54 @@ class _ChipsHomeState extends State<ChipsHome> {
           children: [
             Container(
               alignment: Alignment.center,
-              child: const Text(
+              child: Text(
                 'Quick Chips',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 54),
+                style: TextStyle(
+                  fontSize: 46,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
             ),
             Column(
               children: [
-                // Create, Join, Settings
+                // Create, Join, Theme
+                Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                 ChipsButton(
-                  width: defaultWidth,
+                  width: double.infinity,
                   height: defaultHeight,
                   onPressed: () {},
-                  child: const Text('Create'),
+                  child: const Text('Create game'),
                 ),
                 ChipsButton(
-                  width: defaultWidth,
+                  width: double.infinity,
                   height: defaultHeight,
                   onPressed: () {},
-                  child: const Text('Join'),
+                  child: const Text('Join game'),
                 ),
-                ChipsButton(
-                    width: defaultWidth,
-                    height: defaultHeight,
-                    onPressed: () {
-                      // toggle
-                    },
-                    child: const Text('Theme')),
-                /*
-                FlexThemeModeSwitch(
-                    themeMode: ThemeMode.light,
-                    onThemeModeChanged: _toggleTheme,
-                    flexSchemeData: FlexSchemeData(name: 'Dark', description: 'description', light: Colors.white, dark: dark)),
-              */
+                Padding(padding: EdgeInsets.symmetric(vertical: 20)),
+                ToggleButtons(
+                  isSelected: _themeSel,
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int i = 0; i < _themeSel.length; i++) {
+                        _themeSel[i] = i == index;
+                      }
+                      if (index == 0) {
+                        MyApp.of(context).toggleTheme(ThemeMode.light);
+                      } else {
+                        MyApp.of(context).toggleTheme(ThemeMode.dark);
+                      }
+                    });
+                  },
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  borderWidth: 2,
+                  constraints: const BoxConstraints(
+                    minHeight: 40.0,
+                    minWidth: 80.0,
+                  ),
+                  children: _theme,
+                ),
               ],
             ),
           ],
